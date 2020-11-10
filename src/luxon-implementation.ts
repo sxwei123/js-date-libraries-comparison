@@ -14,3 +14,12 @@ export const getStartOfToday = (now: Date, utcOffset: number): string =>
     .startOf("day")
     .setZone("utc")
     .toISO();
+
+export const isSameDay = (
+  time1: Date,
+  time2: Date,
+  utcOffset: number
+): boolean =>
+  DateTime.fromJSDate(time1)
+    .setZone(formatUTCOffset(utcOffset))
+    .hasSame(DateTime.fromJSDate(time2), "day");
